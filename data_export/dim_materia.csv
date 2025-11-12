@@ -1,0 +1,107 @@
+﻿id_materia,clave,materia
+1,IDDS 001,Administracion de Proyectos
+2,ICCS 261,Administracion de Redes
+3,ISCO 201,Analisis y Diseno de Algoritm
+4,CCOS 609,Animacion por Computadora
+5,CCOS 701,Aplicaciones Multimedia
+6,CCOS 700,Aplicaciones Web
+7,ISCC 201,Arquitectura de Computadoras
+8,ICCS 256,Bases de Datos para Ingenieria
+9,ICCS 007,Circuitos Electricos
+10,ICCS 250,Circuitos Electronicos
+11,ICCS 258,Desarrollo de Aplicaciones Web
+12,ICCS 253,Diseno Digital
+13,ISCC 200,Dllo. de Aplicaciones Moviles
+14,ICCS 006,Ecuaciones Diferenciales
+15,CCOS 013,Estructuras de Datos
+16,CCOS 261,Graficacion
+17,ISCO 200,Ingenieria de Software
+18,CCOS 601,"Ingenieria de Software
+Avanzad"
+19,CCOS 607,"Interaccion Humano
+Computadora"
+20,ICCS 262,"Intercom. y Seguridad en
+Redes"
+21,ICCS 602,Introduccion a los Compiladore
+22,ICCS 608,Investigacion de Operaciones
+23,FGUS 007,Lengua Extranjera IV
+24,ICCS 603,Lenguajes de Programacion
+25,ICCS 605,Maquinas de Aprendizaje
+26,ICCS 600,Metodos Numericos
+27,ICCS 257,Mineria de Datos
+28,ICCS 259,Modelo de Redes
+29,CCOS 251,Probabilidad y Estadistica
+30,CCOS 608,Proces.Digital de Imagenes
+31,ICCS 251,Progra. Concurrente y Paralela
+32,ICCS 252,Programacion Distribuida Aplic
+33,IDDS 002,Proyectos I + D I
+34,CCOS 264,Recuperacion de la Informacion
+35,ICCS 260,Redes Inalambricas
+36,ICCS 617,Robotica Aplicada
+37,ICCS 606,Simulacion
+38,ISCC 202,Sistemas Empotrados
+39,CCOS 252,Sistemas Operativos I
+40,CCOS 254,Sistemas Operativos II
+41,ICCS 609,Supercomputo
+42,ICCS 255,Tec.de Inteligencia Artificial
+43,ICCS 254,Teoria de Control
+44,ICCS 607,Tratamiento de la Informacion
+45,ICCS 616,"Vision y Animacion por
+Comput."
+46,CCOS 600,Web Semantica
+47,ITIS 252,Administrac. de Bases de Datos
+48,ISTI 201,Administracion de Redes
+49,ITIS 254,"Admon. de Sistemas
+Operativos"
+50,ITIS 606,Aprendizaje Artificial
+51,ITIS 611,Arquitectura de Software
+52,ITIS 256,Computo Distribuido
+53,ITIS 601,Computo Orientado a Servicios
+54,ITIS 261,Control de Calidad de Software
+55,ITIS 600,Desarrollo Basado en Modelos
+56,ITIS 702,Desarrollo de Sitios Web
+57,ITIS 014,Diseno de Base de Datos
+58,ITIS 259,Diseno de la Interaccion
+59,ITIS 253,Fund.de la Programacion Logica
+60,ITIS 013,Ingenieria de Software I
+61,ISTI 200,Ingenieria de Software II
+62,ITIS 608,Int.al Computo de Alto Rendimi
+63,ITIS 251,Integr.de Sistemas y Arquitect
+64,ITIS 604,Inteligencia Artificial
+65,ISTI 202,Inteligencia de Negocios
+66,ITIS 607,Investigacion de Operaciones
+67,ITIS 703,"Manten. de Equ. y Redes de
+Com"
+68,ITIS 012,Metodos Estadisticos
+69,ITIS 258,Mineria de Datos
+70,ITIS 257,Modelos de Desarrollo Web
+71,ISTI 203,Prog. de Dispositivos Moviles
+72,"CCOS
+260",Redes de Computadoras
+73,ITIS 250,Redes y Servicios
+74,ITIS 260,Servicios Web
+75,ITIS 255,Tecnologias Web
+76,ITIS 612,Teoria de Decisiones
+77,ISTI 204,Trabajo Colaborativo
+78,CCOS 259,"Arqu. Funcional de
+Computadora"
+79,CCOS 262,Bases de Datos
+80,CCOS 602,Bases de Datos Avanzadas
+81,CCOS 011,Circuitos Electricos
+82,CCOS 250,Circuitos Logicos
+83,CCOS 616,Compiladores
+84,CCOS 257,Computabilidad
+85,CCOS 604,Criptografia
+86,CCOS 255,"Fund. de Lenguaje de
+Programac"
+87,CCOS 258,Inteligencia Artificial
+88,CCOS 014,"Lenguajes Formales y
+Automatas"
+89,CCOS 012,Logica Matematica
+90,CCOS 613,Prog. de Dispositivos Moviles
+91,CCOS 253,Progra. Concurrente y Paralela
+92,CCOS 615,Programacion de Videojuegos
+93,CCOS 256,Programacion Distribuida
+94,CCOS 603,Redes Avanzadas
+95,CCOS 260,Redes de Computadoras
+96,CCOS 263,Seguridad en Redes

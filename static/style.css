@@ -1,0 +1,435 @@
+/* app/static/style.css - Tema Claro con Paleta Académica (FINAL) */
+:root{
+    /* Paleta para tema claro (fondo blanco, texto azul marino) */
+    --bg: #F8F9FA;         /* Fondo Principal: Blanco/Gris Muy Claro */
+    --card: #FFFFFF;       /* Fondo de Tarjetas: Blanco Puro */
+    --text: #1E2B4B;       /* Texto Principal: Azul Marino Oscuro */
+    --muted: #4A608A;      /* Texto Suave/Secundario (Azul grisáceo) */
+    
+    --brand: #008CBA;      /* Azul Principal/Links: Cian Brillante/Turquesa (Botones, Énfasis) */
+    --brand-dark: #1E2B4B; /* Azul Marino Oscuro (Header, Fondos de Bloque) */
+    --accent: #ffae00;     /* Amarillo/Oro de acento */
+    --visible-accent: #69C9FF; /* Azul Claro para texto sobre fondo oscuro (Solución de Contraste) */
+    
+    --ring: rgba(0, 140, 186, 0.2); 
+    --radius: 8px;
+    --shadow: 0 4px 12px rgba(0,0,0,.1); /* Sombra suave */
+}
+  
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0;background:var(--bg);color:var(--text);
+  font:16px/1.6 system-ui, Segoe UI, Roboto, Ubuntu, "Helvetica Neue", Arial;
+  min-height: 100vh; /* Asegura que el cuerpo ocupe al menos toda la altura de la vista */
+  display: flex; /* Permite que el cuerpo sea un contenedor flex */
+  flex-direction: column; /* Apila los elementos verticalmente */
+}
+
+/* ------------------------------------------- */
+/* HEADER FIJO y Navegación de Hamburguesa */
+/* ------------------------------------------- */
+/* ------------------------------------------- */
+/* ------------------------------------------- */
+/* HEADER FIJO y Navegación de Hamburguesa */
+/* ------------------------------------------- */
+/* app/static/style.css - Tema Claro con Paleta Académica (FINAL) */
+/* ... (Estilos de encabezado) ... */
+
+/* ------------------------------------------- */
+/* HEADER FIJO y Navegación de Hamburguesa */
+/* ------------------------------------------- */
+.navbar{
+  background: var(--brand-dark); 
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+}
+
+.navbar .container{
+  display:flex;
+  align-items:center;
+  justify-content: space-between;
+  padding: 1rem 1.5rem; 
+}
+
+.brand{
+  display:flex;
+  align-items:center; /* Clave: Centra la imagen y el texto 'Cubo de Horarios' */
+  gap:.8rem; 
+  text-decoration:none;
+  color:var(--bg); 
+  font-weight: 600;
+  font-size: 1.15rem;
+  line-height: 1.2; /* Lo restablezco un poco más alto, pero sin el margen por defecto */
+  margin: 0; 
+}
+.brand img{
+    height: 44px; /* *** MODIFICACIÓN: Aumento la altura de la imagen de 40px a 44px (o más) *** */
+    width: auto;
+    display: block; 
+    /* Eliminar cualquier desalineación de la imagen con la línea de base */
+    
+}
+
+/* Menú de Escritorio (Enlaces en la parte superior derecha) */
+.menu-desktop {
+  display: flex;
+  gap: 1rem;
+  align-items: center; /* Clave: Centra los enlaces con el resto del header */
+}
+
+.menu-desktop a {
+  color: var(--bg); 
+  text-decoration: none;
+  padding: 0.2rem 1rem; 
+  border-radius: var(--radius);
+  transition: all .3s ease;
+  font-weight: 500;
+  margin: 0;
+}
+/* ... (El resto de los estilos sin cambios) ... */
+
+
+
+/* Menú Desplegable Móvil (Contenedor de Links) */
+.menu-mobile {
+  display: none; 
+  flex-direction: column;
+  position: absolute;
+  top: 100%; 
+  left: 0;
+  right: 0;
+  background: var(--brand-dark);
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+  padding: 0;
+}
+
+.menu-mobile.active {
+  display: flex !important; /* Forzar despliegue */
+}
+
+.menu-mobile a {
+  padding: 1rem 1.5rem;
+  color: var(--bg);
+  text-decoration: none;
+  transition: background 0.2s ease;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.menu-mobile a:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--accent);
+}
+
+/* ------------------------------------------- */
+/* Layout y Contenido */
+/* ------------------------------------------- */
+
+.container{max-width:1200px;margin:0 auto;padding:0 1.5rem}
+.page{
+    padding-top: 100px;
+    padding-bottom: 48px;
+    flex-grow: 1; /* Permite que el contenido principal ocupe todo el espacio disponible */
+}   
+/* Títulos de Página y Contraste de Nombres */
+.h2-title {
+    color: var(--text); 
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+}
+/* *** Títulos principales centrado y uniforme *** */
+.main-title {
+    color: var(--text); 
+    font-size: 2rem; /* Tamaño uniforme */
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    text-align: center; /* Centrado */
+    width: 100%;
+}
+.docente-nombre-titulo {
+    color: var(--text); /* CORREGIDO: Azul Marino sobre fondo blanco */
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+/* Tablas (Contraste) */
+.tabla-scroll {
+  overflow-x: auto;
+  border-radius: var(--radius);
+  /* Fondo cambiado a blanco o removido ya que el fondo se define por tr */
+  background-color: var(--card); /* Fondo blanco para contenedor */
+  padding: 0;
+  box-shadow: var(--shadow);
+}
+.tabla-resultados {
+  width: 100%;
+  border-collapse: collapse;
+  color: var(--text); /* *** MODIFICACIÓN: Texto oscuro para ser visible en fondos claros *** */
+  font-size: 0.95rem;
+}
+.tabla-resultados th {
+  background-color: var(--brand-dark); /* Fondo del encabezado se mantiene oscuro */
+  color: white; /* Texto blanco para el encabezado */
+  text-align: left;
+  padding: 1rem;
+}
+
+/* *** NUEVOS ESTILOS PARA EFECTO CEBRA CLARO *** */
+.tabla-resultados tbody tr {
+    /* Fondo predeterminado (filas impares: 1, 3, 5, etc.) */
+    background-color: var(--card); /* Blanco */
+}
+
+.tabla-resultados tbody tr:nth-child(even) {
+  /* Filas pares (2, 4, 6, etc.) */
+  background-color: #F0F0F0; /* Gris muy claro */
+}
+
+.tabla-resultados tbody tr:hover {
+  background-color: #E0E0E0; /* Gris ligeramente más oscuro al pasar el ratón */
+}
+
+/* CORRECCIÓN: Asegurar el color de celda en el cuerpo de la tabla si tiene detalle */
+.tabla-resultados td {
+    color: var(--text); /* Asegurar que el texto dentro de td sea oscuro */
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid #EEE; /* Separador sutil */
+}
+/* CORRECCIÓN: El estilo 'hora-col' debe seguir el esquema de color oscuro */
+.tabla-resultados tbody tr .hora-col strong {
+    color: var(--text); 
+}
+
+.tabla-desplegable-contenedor {
+    margin-bottom: 2rem;
+    border-radius: var(--radius);
+    overflow: hidden; /* Oculta cualquier desbordamiento al colapsar */
+    border: 1px solid #E0E0E0;
+    box-shadow: var(--shadow);
+}
+
+.collapsible-header {
+    background: var(--brand-dark); /* Fondo oscuro para el encabezado de la tabla */
+    color: white;
+    padding: 1rem 1.5rem;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.collapsible-header:hover {
+    background: #123458; /* Color ligeramente más claro al pasar el ratón */
+}
+
+/* Icono de flecha para indicar estado */
+.toggle-icon {
+    transition: transform 0.3s ease;
+    font-size: 0.8em;
+}
+
+.toggle-icon.expanded {
+    transform: rotate(90deg); /* Gira si está expandido */
+}
+
+.collapsible-content {
+    /* El contenido inicialmente está visible o se controla por JS */
+    transition: max-height 0.3s ease-out, opacity 0.3s ease-out;
+    overflow: hidden;
+    /* Estilo para cuando está colapsado (usaremos JS para añadir la clase .collapsed) */
+}
+
+.collapsible-content.collapsed {
+    max-height: 0;
+    opacity: 0;
+}
+
+
+
+/* Detalle de clase dentro de tabla (Mejora de Contraste) */
+.clase-detalle .nombre-materia {
+    font-weight: 600;
+    color: var(--text); /* *** MODIFICACIÓN: Texto oscuro *** */
+}
+.clase-detalle .clave-materia {
+    color: var(--brand); /* *** MODIFICACIÓN: Color principal (azul) *** */
+    font-size: 0.9em;
+}
+.clase-detalle .salon-info {
+    color: var(--muted); /* *** MODIFICACIÓN: Color secundario (gris azulado) *** */
+    font-size: 0.9em;
+}
+
+/* Botones, Inputs, Cards (Mismo estilo anterior) */
+.btn-primary{
+  appearance:none;border:0;border-radius: var(--radius);
+  background: var(--brand); 
+  padding: 0.75rem 1.5rem;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  transition: background 0.2s;
+}
+.btn-primary:hover{background: #00749a;}
+
+.form-grid{display:flex;flex-wrap:wrap;gap:1.5rem;margin:1.5rem 0;align-items:flex-end}
+.form-grid label{display:flex;flex-direction:column;gap:0.5rem;flex:1 1 320px; color: var(--text);}
+
+input[type="text"], select {
+  padding: 0.75rem 1rem;
+  border-radius: var(--radius);
+  border: 1px solid #CCC;
+  background: var(--card); 
+  color: var(--text); /* Color por defecto del texto (oscuro) */
+  outline: none;
+  font-size: 1rem;
+}
+
+/* *** NUEVA CLASE PARA EL SELECT CUANDO ACTÚA COMO PLACEHOLDER *** */
+/* Esta clase se añade en JS si el valor del select es vacío */
+.select-placeholder {
+    color: var(--muted) !important; 
+}
+
+/* El estilo de .placeholder-option en el option individual puede no funcionar, pero lo dejamos por consistencia */
+.placeholder-option {
+    color: var(--muted) !important;
+}
+select option:not(.placeholder-option) {
+    color: var(--text);
+}
+.cards{
+    display:flex;
+    flex-direction: column; 
+    gap:1.5rem; 
+    margin: 2rem auto; 
+    max-width: 900px; 
+    padding: 0 1.5rem; 
+}
+.cards .card{
+  flex:1 1 auto; 
+  width: 100%; 
+  background: var(--card); 
+  border-radius:var(--radius);
+  padding:0.8rem; 
+  box-shadow:var(--shadow);
+  color: var(--text); 
+  transition: transform .2s ease;
+  border: 1px solid #E0E0E0;
+  text-decoration: none; 
+  display: block; 
+  text-align: left; 
+  
+  /* *** MODIFICACIÓN CLAVE 1: Establecer la tarjeta como contexto de posición *** */
+  position: relative; 
+}
+.cards .card h3{
+    color: var(--brand); 
+    margin:.5rem 0 .5rem; 
+    font-size: 1.2rem; 
+    text-decoration: none;
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+} 
+.cards .card p{color: var(--muted); font-size: 0.95rem; text-decoration: none;} 
+
+/* *** MODIFICACIÓN CLAVE 2: Ajuste de posición del icono con posicionamiento absoluto *** */
+.cards .card h3 .card-icon {
+    font-size: 2em; 
+    color: var(--brand); 
+    
+    /* MÉTODOS ANTERIORES ELIMINADOS: margin-right: 20px; margin-top: 30px; */
+    
+    /* *** NUEVO MÉTODO: Posicionamiento Absoluto *** */
+    position: absolute; 
+    top: 50%; /* Lo centra verticalmente en la tarjeta */
+    right: 40px; /* Lo mueve 20px desde el borde derecho */
+    transform: translateY(-50%); /* Ajuste fino para centrado vertical perfecto */
+}
+/* app/static/style.css */
+
+/* ... (Estilos de Tablas y Cards sin cambios) ... */
+
+/* ------------------------------------------- */
+/* ESTILOS PARA TABLAS DESPLEGABLES (COLLAPSIBLE) */
+/* ------------------------------------------- */
+
+.tabla-contenedor-docente { /* Nuevo contenedor para aislar el docente */
+    margin-bottom: 2rem;
+}
+
+.collapsible-header {
+    /* *** MODIFICACIÓN: Colores para Blanco con Letras Azules *** */
+    background: var(--card); /* Fondo blanco */
+    color: var(--brand-dark); /* Texto azul principal */
+    padding: 1rem 1.5rem;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1.3rem; 
+    font-weight: 700;
+    border-radius: var(--radius); 
+    margin-bottom: 1rem; 
+    box-shadow: var(--shadow); /* Sombra suave */
+    border: 1px solid #E0E0E0; /* Borde sutil para definir el cuadro */
+}
+
+.collapsible-header:hover {
+    background: #F8F8F8; /* Gris muy ligero al pasar el ratón */
+}
+
+.nombre-docente-colapsado {
+    color: var(--muted); /* Asegura que el nombre sea azul */
+}
+
+/* Icono de flecha para indicar estado */
+.toggle-icon {
+    transition: transform 0.3s ease;
+    font-size: 0.8em;
+    color: var(--muted); /* Asegura que la flecha sea azul */
+}
+
+.toggle-icon.expanded {
+    transform: rotate(90deg); 
+}
+
+.tabla-scroll-wrapper { 
+    transition: max-height 0.3s ease-out, opacity 0.3s ease-out;
+    overflow: hidden;
+}
+
+.collapsible-content.collapsed {
+    max-height: 0 !important; 
+    opacity: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+/* FOOTER (Pie de Página) */
+/* ------------------------------------------- */
+.footer {
+    background: var(--brand-dark); 
+    color: var(--bg); 
+    padding: 1rem 0;
+    width: 100%;
+    margin-top: auto; /* Empuja el footer a la parte inferior (funciona con body display: flex) */
+}
+
+.footer .container {
+    text-align: center; /* Centra el texto dentro del contenedor del footer */
+    padding: 0 1.5rem;
+}
+
+.footer small {
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.7); /* Color más suave para el texto */
+}   

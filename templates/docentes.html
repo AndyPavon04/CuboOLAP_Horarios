@@ -1,0 +1,135 @@
+{% extends "base.html" %}
+{% block title %}Docentes · Cubo de Horarios{% endblock %}
+{% block content %}
+<h1 class="main-title">Horario por docente</h1>
+
+<form method="post" class="form-grid">
+  <label>
+    Nombre del docente
+    <input type="text" name="nombre_docente" placeholder="Ingresa Nombre o Apellido" value="{{ nombre_docente or '' }}" />
+  </label>
+  <button class="btn-primary" type="submit">Buscar</button>
+</form>
+
+{% if resultado is not none and not resultado.empty %}
+  {% set dias = ["Lunes", "Martes", "Miercoles", "Jueves", "Viernes", "Sabado"] %}
+  {% set docentes = resultado.groupby("nombre_completo") %}
+  {% set num_docentes = docentes.groups.keys() | length %}
+  {% set es_desplegable = num_docentes > 1 %}
+
+  {% for nombre_docente, df_docente in docentes %}
+    
+    {% set docente_id = nombre_docente | replace(' ', '-') | replace('.', '') | lower %}
+
+    <div class="tabla-contenedor-docente">
+        
+        {# *** ENCABEZADO VISIBLE (SIEMPRE) *** #}
+        {% if es_desplegable %}
+            <div class="collapsible-header" data-target="content-{{ docente_id }}">
+                <span class="nombre-docente-colapsado">{{ nombre_docente }}</span>
+                <i class="fas fa-chevron-right toggle-icon {% if loop.index == 1 %}expanded{% endif %}"></i>
+            </div>
+        {% else %}
+            {# Si es un solo docente, muestra el título normal #}
+            <h3>Horario del docente:</h3>
+            <h2 style="color: var(--accent); margin-bottom: 1.5rem;">{{ nombre_docente }}</h2>
+        {% endif %}
+
+        {# *** CONTENIDO DESPLEGABLE: SOLO LA TABLA DE HORARIO *** #}
+        <div id="content-{{ docente_id }}" class="tabla-scroll-wrapper {% if es_desplegable %}collapsible-content {% if loop.index > 1 %}collapsed{% endif %}{% endif %}">
+        
+            {% set horarios = df_docente.groupby(["hora_inicio", "hora_fin"]) %}
+            
+            <div class="tabla-scroll">
+                <table class="tabla-resultados">
+                    <thead>
+                        <tr>
+                            <th>Hora</th>
+                            {% for dia in dias %}
+                            <th>{{ dia }}</th>
+                            {% endfor %}
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for (inicio, fin), grupo in horarios %}
+                        <tr>
+                            {# *** MODIFICACIÓN CLAVE AQUÍ: Aplicar .strftime('%H:%M') *** #}
+                            <td class="hora-col">
+                                <strong>{{ inicio.strftime('%H:%M') }}</strong> - {{ fin.strftime('%H:%M') }}
+                            </td>
+
+                            {% for dia in dias %}
+                                {% set fila = grupo[grupo["dia_semana"] == dia] %}
+                                <td style="vertical-align: top;">
+                                    {% if not fila.empty %}
+                                        
+                                        {% set clases_unicas = fila.groupby(["nombre_materia", "clave", "edificio", "aula"]) %}
+                                        
+                                        {% for (nombre_materia, clave, edificio, aula), _ in clases_unicas %}
+                                            <div class="clase-detalle" style="margin-bottom: 8px;">
+                                                <div style="font-weight:600;">{{ nombre_materia }}</div>
+                                                <div style="color: var(--accent); font-size: 0.9em;">{{ clave }}</div>
+                                                <div style="color: var(--muted); font-size: 0.9em;">
+                                                    {{ edificio }} / {{ aula }}
+                                                </div>
+                                            </div>
+                                        {% endfor %}
+                                        
+                                    {% else %}
+                                        <span style="color: var(--muted);">–</span>
+                                    {% endif %}
+                                </td>
+                            {% endfor %}
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        {# *** FIN CONTENIDO DESPLEGABLE *** #}
+
+    </div> {# Cierre de .tabla-contenedor-docente #}
+  {% endfor %}
+  
+  {# *** SCRIPT JS PARA EL COMPORTAMIENTO DESPLEGABLE (SIN CAMBIOS) *** #}
+  {% if es_desplegable %}
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const headers = document.querySelectorAll('.collapsible-header');
+        
+        headers.forEach(header => {
+            const targetId = header.getAttribute('data-target');
+            const content = document.getElementById(targetId);
+            const icon = header.querySelector('.toggle-icon');
+            
+            // Establecer el max-height inicial para la animación
+            if (content && !content.classList.contains('collapsed')) {
+                content.style.maxHeight = content.scrollHeight + "px";
+            }
+
+            header.addEventListener('click', function() {
+                const isCollapsed = content.classList.toggle('collapsed');
+                icon.classList.toggle('expanded');
+                
+                if (isCollapsed) {
+                    content.style.maxHeight = 0;
+                } else {
+                    content.style.maxHeight = content.scrollHeight + "px";
+                }
+            });
+
+            window.addEventListener('resize', () => {
+                if (content && !content.classList.contains('collapsed')) {
+                    content.style.maxHeight = content.scrollHeight + "px";
+                }
+            });
+        });
+    });
+  </script>
+  {% endif %}
+
+{% else %}
+  <p style="color:var(--muted); margin-top:20px;">No se encontraron horarios para mostrar.</p>
+{% endif %}
+
+{% endblock %}

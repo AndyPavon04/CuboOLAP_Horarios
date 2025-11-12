@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+{% block title %}Docentes en un edificio a una hora · Cubo de Horarios{% endblock %}
+{% block content %}
+
+<h2>Docentes en un edificio a una hora</h2>
+
+<form method="post" class="form-grid two">
+  <label>
+    Edificio
+    <select name="edificio" required>
+      <option value="" class="placeholder-option">-- Selecciona un edificio --</option>
+      {% for e in edificios_lista %}
+        <option value="{{ e }}" {% if e == edificio %}selected{% endif %}>{{ e }}</option>
+      {% endfor %}
+    </select>
+  </label>
+
+  <label>
+    Hora
+    <select name="hora" required>
+      <option value="" class="placeholder-option">-- Selecciona una hora --</option>
+      {% for h in horas_lista %}
+        <option value="{{ h }}" {% if h == hora %}selected{% endif %}>{{ h }}</option>
+      {% endfor %}
+    </select>
+  </label>
+
+  <button class="btn-primary" type="submit">Buscar</button>
+</form>
+
+{% if tabla is not none %}
+<div class="tabla-contenedor">
+  <h3>Resultados{% if edificio and hora %} para "{{ edificio }}" a las {{ hora }}{% endif %}</h3>
+  <div class="tabla-scroll">
+    <table class="tabla-resultados">
+      <thead>
+        <tr>
+          <th>Docente</th>
+          <th>Materia</th>
+          <th>Clave</th>
+          <th>Salón</th>
+          <th>Día</th>
+          <th>Hora inicio</th>
+          <th>Hora fin</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for _, row in tabla.iterrows() %}
+        <tr>
+          <td>{{ row["nombre_completo"] }}</td>
+          <td>{{ row["nombre_materia"] }}</td>
+          <td>{{ row["clave"] }}</td>
+          <td>{{ row["codigo_salon"] }}</td>
+          <td>{{ row["dia_semana"] }}</td>
+          <td>{{ row["hora_inicio"] }}</td>
+          <td>{{ row["hora_fin"] }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+{% endif %}
+
+{% endblock %}

@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block title %}Inicio · Cubo de Horarios{% endblock %}
+{% block content %}
+<section class="hero" style="text-align: center;"> 
+  <h1 class="main-title">Horarios impartidos en la FCC</h1>
+  <p>Puedes consultar a algún Docente, Materia o Edificio.</p>
+</section>
+
+<section class="cards">
+  <a class="card" href="{{ url_for('docentes') }}">
+    <h3>Docentes <i class="fas fa-user-tie card-icon"></i></h3>
+    <p>Busca el horario de un docente a a semana.</p>
+  </a>
+  <a class="card" href="{{ url_for('materias') }}">
+    <h3>Materias <i class="fas fa-book-open card-icon"></i></h3>
+    <p>Muestra los docentes que impartes una materia con su respectiva clave.</p>
+  </a>
+  <a class="card" href="{{ url_for('edificios') }}">
+    <h3>Edificios <i class="fas fa-building card-icon"></i></h3>
+    <p>Consulta los profesores que están en un edificio a una determinada hora</p>
+  </a>
+</section>
+{% endblock %}

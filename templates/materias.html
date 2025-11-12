@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% block title %}Docentes por materia/clave · Cubo de Horarios{% endblock %}
+{% block content %}
+
+<h2>Docentes por materia/clave</h2>
+
+<form method="post" class="form-grid">
+  <label>
+    Selecciona la materia
+    <select name="materia" required>
+      <option value="" class="placeholder-option">-- Elige una materia --</option>
+      {% for m in materias_lista %}
+        <option value="{{ m.nombre_materia }}" {% if m.nombre_materia == query %}selected{% endif %}>
+          {{ m.nombre_materia }} ({{ m.clave }})
+        </option>
+      {% endfor %}
+    </select>
+  </label>
+  <button class="btn-primary" type="submit">Consultar</button>
+</form>
+
+{% if tabla is not none %}
+<div class="tabla-contenedor">
+  <h3>Resultados{% if query %} para "{{ query }}"{% endif %}</h3>
+  <div class="tabla-scroll">
+    <table class="tabla-resultados">
+      <thead>
+        <tr>
+          <th>Clave</th>
+          <th>Materia</th>
+          <th>Docente</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for _, row in tabla.iterrows() %}
+        <tr>
+          <td>{{ row["clave"] }}</td>
+          <td>{{ row["nombre_materia"] }}</td>
+          <td>{{ row["nombre_completo"] }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+{% endif %}
+
+{% endblock %}

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>{% block title %}{% endblock %}</title>
+ <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+ </head>
+<body>
+ <header class="navbar">
+         <div class="container">
+            <a href="{{ url_for('index') }}" class="brand">
+                             <img src="{{ url_for('static', filename='fcc_logo.png') }}">
+             FCC
+            </a>
+            <nav class="menu-desktop">
+             <a href="{{ url_for('docentes') }}">Docentes</a>
+             <a href="{{ url_for('materias') }}">Materias</a>
+             <a href="{{ url_for('edificios') }}">Edificios</a>
+            </nav>
+
+         </div>
+         <nav class="menu-mobile" id="mobile-menu">
+            <a href="{{ url_for('docentes') }}">Docentes</a>
+            <a href="{{ url_for('materias') }}">Materias</a>
+            <a href="{{ url_for('edificios') }}">Edificios</a>
+         </nav>
+     </header>
+
+     <main class="page">
+         <div class="container">
+         {% block content %}{% endblock %}
+         </div>
+     </main>
+
+     <footer class="footer">
+         <div class="container">
+            <p>&copy; Otoño 2025 — Facultad de Ciencias de la Computación</p>
+            <p>Benemérita Universidad Autónoma de Puebla</p>
+        </div>
+     </footer>
+
+     <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const toggle = document.getElementById('menu-toggle');
+      const menu = document.getElementById('mobile-menu');
+      
+      if (toggle && menu) {
+        toggle.addEventListener('click', function() {
+          menu.classList.toggle('active');
+          toggle.classList.toggle('active');
+        });
+        
+        // Cierra el menú móvil al hacer clic en un enlace (UX móvil)
+        menu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                menu.classList.remove('active');
+                toggle.classList.remove('active');
+            });
+        });
+      }
+      
+      // *** NUEVO CÓDIGO JS PARA CONTROLAR EL ESTILO PLACEHOLDER EN SELECT ***
+      const selects = document.querySelectorAll('select');
+      
+      selects.forEach(select => {
+          // Función para actualizar el estilo basado en el valor
+          const updatePlaceholderStyle = () => {
+              if (select.value === "") {
+                  select.classList.add('select-placeholder');
+              } else {
+                  select.classList.remove('select-placeholder');
+              }
+          };
+
+          // Inicializar el estilo al cargar
+          updatePlaceholderStyle();
+
+          // Actualizar el estilo al cambiar el valor
+          select.addEventListener('change', updatePlaceholderStyle);
+      });
+      // *** FIN DE CÓDIGO JS PARA SELECT ***
+    });
+  </script>
+
+</body>
+</html>
